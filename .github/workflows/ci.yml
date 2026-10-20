@@ -1,3 +1,4 @@
+
 name: Food Delivery CI
 
 on:
@@ -26,6 +27,11 @@ jobs:
 
       - name: Check Python syntax
         run: python -m compileall -q backend
+
+      - name: Run automated tests
+        env:
+          PYTHONPATH: backend
+        run: pytest -v
 
       - name: Build Docker image
         run: docker build -f backend/Dockerfile -t food-delivery-api:ci .
