@@ -31,6 +31,8 @@ jobs:
       - name: Run automated tests
         env:
           PYTHONPATH: backend
+          DATABASE_URL: postgresql+psycopg://test:test@localhost:5432/test
+          REDIS_URL: redis://localhost:6379/0
         run: pytest -v
 
       - name: Build Docker image
